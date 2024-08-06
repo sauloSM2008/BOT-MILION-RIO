@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOT MILIONÁRIO🔥</title>
+    <title>BOT MILIONÁRIO 🔥</title>
     <style>
         body {
             margin: 0;
@@ -13,55 +13,68 @@
             align-items: center;
             justify-content: flex-start;
             height: 100vh;
-            background: linear-gradient(to bottom, #6B737E, #30343F);
-            font-family: Arial, sans-serif;
-        }
-        .user-info, .container, .values-container, .extra-values {
-            width: calc(100% - 20px);
-            background: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border: 5px solid #0A0F21;
-            margin-bottom: 10px;
-            text-align: center;
+            background: linear-gradient(to right, #ff4b1f, #ff9068);
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
         }
         .container {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
+            width: 90%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
         }
-        .text, .percentage-text {
+        .text {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #ffe066;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .values-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            width: 90%;
+        }
+        .random-value {
+            flex: 1;
+            margin: 0 10px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             font-size: 24px;
-            color: #333;
+            color: #fff;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s;
+        }
+        .random-value:hover {
+            transform: scale(1.1);
         }
         .percentage-text {
-            color: #fff;
             background-color: rgba(0, 255, 0, 0.8);
-            padding: 5px 10px;
-            border-radius: 5px;
+            padding: 10px 20px;
+            border-radius: 15px;
+            font-size: 24px;
+            font-weight: bold;
         }
         iframe {
             width: 100%;
-            height: calc(100vh - 100px); /* Ajusted height to fit below the text containers */
+            height: 95vh;
             border: none;
-            border-radius: 0 0 10px 10px;
+            border-radius: 20px;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
-        .values-container, .extra-values {
-            display: flex;
-            justify-content: space-between;
-        }
-        .values-container .random-value, .extra-values .random-x-value {
-            flex: 1;
-            margin: 0 5px;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border: 3px solid #30343F;
-            color: #333;
-            font-size: 20px;
-            text-align: center;
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
@@ -70,7 +83,7 @@
         <div class="text" id="dynamicText">CALCULANDO...</div>
     </div>
     <div class="values-container" id="valuesContainer">
-        <div class="random-value" id="percentageText">--</div>
+        <div class="random-value percentage-text" id="percentageText">--</div>
         <div class="random-value" id="randomValue2">--</div>
         <div class="random-value" id="randomXValue">--</div>
     </div>
@@ -83,8 +96,7 @@
         }
 
         function changeText() {
-            // Aqui, ajustamos a distribuição dos índices para reduzir a probabilidade de "POSSÍVEL ROSA"
-            const probabilities = [0.6, 0.35, 0.05]; // 60% para "POSSÍVEL AZUL", 35% para "POSSÍVEL ROXO", 5% para "POSSÍVEL ROSA"
+            const probabilities = [0.6, 0.35, 0.05];
             const random = Math.random();
             let cumulative = 0;
             let selectedIndex;
@@ -102,8 +114,7 @@
             if (selectedText === "POSSÍVEL AZUL") {
                 randomNumber = getRandomNumber(1.1, 1.99);
             } else if (selectedText === "POSSÍVEL ROXO") {
-                randomNumber = getRandomNumber(2, 5.99
-             );
+                randomNumber = getRandomNumber(2, 5.99);
             } else if (selectedText === "POSSÍVEL ROSA") {
                 randomNumber = getRandomNumber(6, 10.99);
             }
@@ -124,9 +135,9 @@
             document.getElementById("randomXValue").innerText = `${getRandomNumber(1.5, 2.50)}X`;
         }
 
-        setInterval(changeText, 18000); // 16000 ms = 16 segundos
-        setInterval(changePercentage, 18000); // 16000 ms = 16 segundos
-        setInterval(changeRandomXValue, 18000); // 16000 ms = 16 segundos
+        setInterval(changeText, 18000);
+        setInterval(changePercentage, 18000);
+        setInterval(changeRandomXValue, 18000);
     </script>
 </body>
 </html>
